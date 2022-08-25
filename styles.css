@@ -7,6 +7,7 @@
 
 html {
     min-height: 100vh;
+    cursor: url("Assets/Cursors/Normal\ Select\ 2.cur"), auto;
 }
 
 body {
@@ -43,9 +44,161 @@ body {
     perspective: 500px;
 }
 
-.card{
-    background-color: green;
+.card {
+    position: relative;
     height: 175px;
     width: 125px;
 }
 
+.card:hover {
+    cursor: url(Assets/Cursors/Alternate\ Select\ 1.cur), auto;
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    border-width: 1px;
+    border-style: solid;
+    transition: transform 500ms ease-in-out;
+}
+
+.card.visible .card-back {
+    transform: rotateY(-180deg);
+}
+
+.card.visible .card-front {
+    transform: rotateY(0);
+}
+
+.card.matched .card-value {
+    animation: dance 1s linear infinite 500ms;
+}
+
+.overlay-text {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    color: rgb(206, 241, 54);
+    font-family: 'Cute Font', sans-serif;
+}
+
+.overlay-text-small {
+    font-size: .3em;
+}
+
+.overlay-text.visible {
+    display: flex;
+    flex-direction: column;
+    animation: overlay-grow 500ms forwards;
+}
+
+@keyframes overlay-grow {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+        font-size: 0;
+    }
+    to {
+        background-color: rgba(0, 0, 0, .8);
+        font-size: 10em;
+    }
+}
+
+@keyframes dance {
+    0%, 100% {
+        transform: rotate(0);
+    }
+    25% {
+        transform: rotate(-30deg);
+    }
+    75% {
+        transform: rotate(30deg);
+    }
+}
+
+.card-back {
+    background-color: green;
+    border-color: chartreuse;
+}
+
+.card-front {
+    background-color: rgb(42, 225, 164);
+    border-color: rgb(63, 175, 138);
+    transform: rotateY(180deg);
+}
+
+.card-value {
+    transition: transform 100ms ease-in-out;
+    transform: scale(.9);
+}
+
+.card-front:hover .card-value {
+    transform: scale(1);
+}
+
+.leaf {
+    position: absolute;
+    transition: width 100ms ease-in-out, height 100ms ease-in-out;
+    width: 47px;
+    height: 47px;
+}
+
+.card-face:hover .leaf {
+    width: 52px;
+    height: 52px;
+  }
+
+.leaf-top-left {
+    top: 0;
+    left: 0;
+}
+
+.leaf-top-right {
+    top: 0;
+    right: 0;
+}
+
+.leaf-bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.leaf-bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+.group {
+    align-self: flex-start;
+    transform: translateY(30px);
+    transition: transform 100ms ease-in-out;
+    width: 100px;
+    height: 100px;
+}
+
+.card-back:hover .group {
+    transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+    .game-container {
+        grid-template-columns: repeat(2, auto);
+    }
+
+    .game-info-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
