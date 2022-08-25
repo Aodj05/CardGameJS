@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=Stylish&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100vh;
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(rgb(65, 230, 65), darkgreen);
+}
+
+.page-title {
+    color: chartreuse;
+    font-family: 'Cute Font', sans-serif;
+    font-weight: normal;
+    text-align: center;
+    font-size: 6rem;
+}
+
+.game-info {
+    font-family: 'Stylish', sans-serif;
+    color: greenyellow;
+    font-size: 2em;
+}
+
+.game-info-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-container {
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px;
+    justify-content: center;
+    perspective: 500px;
+}
+
+.card{
+    background-color: green;
+    height: 175px;
+    width: 125px;
+}
+
