@@ -90,10 +90,10 @@ class CutesyCardSafari {
         card1.classList.add('matched');
         card2.classList.add('matched');
         this.audioController.match();
-        if(this.matchedCards.length === this.cardsArray)
+        if(this.matchedCards.length === this.cardsArray.length)
             this.victory();
     }
-    cardMisMatch(card) {
+    cardMisMatch(card1, card2) {
         this.busy = true;
         setTimeout(() => {
             card1.classList.remove('visible');
@@ -132,8 +132,7 @@ class CutesyCardSafari {
     }
 
     canFlipCard(card) {
-        return true;
-        // return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
+        return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     }
 }
 
